@@ -1,0 +1,51 @@
+
+{% extends 'StaticPage/base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+ <!-- <header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+<!--        <div class="carousel-item active" style="background-image: url('{% static 'Tracer/img/banner.png' %}')">
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </header> -->
+
+<img class="img-fluid w-100"  src="{% static 'Tracer/img/banner.png' %}">
+  <!-- Page Content -->
+  <div class="container">
+
+    <h1 class="my-4">Welcome to Tracer</h1>
+
+
+    <!-- Features Section -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>A one-click solution to hashtag tracking</h2>
+
+        <p>
+          Tracer is a platform that enables you to track down your products or services reviews on social media such as Facebook and twitter. With our help you can collect valuable sentiments of customers for your product or services. We also support popular person tracking such as celebrities, politicians or entrepreneurs. With our easy to use website you can run analysis on any topic, product, service or person to collect thier popularity in terms of positive, negative and neutral sentiments, with the help of the simple and easy graphs you can understand the results easily. We also provide active Geo-fencing on maps to locate your sentiment areas for you to identify a geographical section easily.
+</p>
+
+    <!-- /.row -->
+
+
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+{% endblock %}

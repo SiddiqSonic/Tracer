@@ -1,0 +1,177 @@
+
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="{% static 'Tracer/img/iconlogo.png' %}"><!-- icon -->
+  <title>Tracer  Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'Tracer/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="{% static 'Tracer/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'Tracer/css/sb-admin.css' %}" rel="stylesheet">
+  <!--my style-->
+  <link href="{% static 'Tracer/css/style.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'Tracer/vendor/JvectorMap/jquery-jvectormap-2.0.3.css' %}" type="text/css" media="screen"/>
+
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-blue static-top">
+
+    <a class="navbar-brand mr-1" href="{% url 'home'%}"><img src="{% static 'Tracer/img/logo.png' %}"></a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+   <!-- Navbar -->
+    <ul class="navbar-nav  ml-auto mr-0  my-2 my-md-0">
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+
+          <a class="dropdown-item" href="{% url 'logout' %}"  >Logout</a>
+        </div>
+      </li>
+    </ul>
+<!--data-target="#logoutModal"-->
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav bg-gradient-blue"> <!-- toggled and bg-gradient-blue class addede -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'twitter' %}">
+          <i class="fab fa-twitter"></i>
+          <span>Twitter</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'web' %}">
+          <i class="fas fa-globe"></i>
+          <span>Web Reviews</span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'comprtitors' %}">
+          <i class="fas fa-balance-scale"></i>
+          <span>Competitors</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'post' %}">
+          <i class="fas fa-comments"></i>
+          <span>Post</span></a>
+      </li>
+     <!-- <li class="nav-item">
+        <a class="nav-link" href="{% url 'map' %}">
+          <i class="fas fa-map-marked-alt"></i>
+          <span>Maps</span></a>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mobileFeatuers' %}">
+          <i class="fa fa-mobile" ></i>
+          <span>Mobile Features</span></a>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+      <div class="container-fluid">
+
+          <div class="row">
+
+            <div class="col-12 text-left">
+              <h2 class="text-uppercase">{{Keyword}}</h2>
+            </div>
+
+          </div>
+
+{% block content %}
+{% endblock %}
+
+          </div><!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <!--<footer class="sticky-footer" style="z-index:45;">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Tracer 2019</span>
+          </div>
+        </div>
+      </footer>-->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'Tracer/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'Tracer/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'Tracer/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+
+  <!-- Tag Cloud JavaScript-->
+  <script src="{% static 'Tracer/vendor/jq-plugin-wordcloud/jquery.awesomeCloud.js' %}"></script>
+  <script src="{% static 'Tracer/js/TagCloud/Tagcloud.js' %}"></script>
+
+  <!-- JvectorMap JavaScript-->
+  <!--
+  <script src="{% static 'Tracer/vendor/JvectorMap/jquery-jvectormap-2.0.3.min.js' %}"></script>
+  <script src="{% static 'Tracer/vendor/JvectorMap/jquery-jvectormap-world-mill.js' %}"></script>
+  <script src="{% static 'Tracer/js/JvectorMap/JvectorMap-custom.js' %}"></script>
+-->
+
+
+  <!-- Data Table JavaScript-->
+  <!--
+  <script src="{% static 'Tracer/vendor/datatables/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'Tracer/vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+-->
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'Tracer/js/sb-admin.min.js' %}"></script>
+
+
+</body>
+
+</html>

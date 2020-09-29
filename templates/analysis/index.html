@@ -1,0 +1,121 @@
+{% extends 'analysis/base1.html' %}
+{% block content %}
+{% load staticfiles %}
+          <div id="chart">
+            <div class="row mt-5">
+
+              <div class="col-lg-6">
+                <div class="card mb-3">
+                  <div class="card-header">
+                  <i class="fas fa-chart-pie"></i>
+                  Total Score
+                  </div>
+                  <div class="card-body">
+                  <canvas id="myPieChart" width="100%" ></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 text-left">
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <i class="fas fa-male"></i>
+                    <i class="fas fa-female"></i>
+                    Male & Female
+                  </div>
+                  <div class="card-body">
+                    <canvas id="Gender" width="100%"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div><!--/row-->
+
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <i class="fas fa-retweet"></i>
+                    Retweet Score
+                  </div>
+                  <div class="card-body">
+                   <canvas id="postType" width="100%"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--/row-->
+          <div class="row">
+            <div class="col-lg-12 text-left">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fas fa-wave-square"></i>
+                  Most Used Words
+                </div>
+                <div class="card-body">
+                    <div id="demo" class="wordcloud">
+                      {% for word,count in wordcount.items %}
+                      <span data-weight="{{ count }}"> {{word}} </span>
+                      {% endfor %}
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<script src="{% static 'Tracer/vendor/chart.js/Chart.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+ <script >
+  // Pie Chart Example
+  var ctx = document.getElementById("myPieChart");
+  var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Positive", "Negative", "Neutral"],
+    datasets: [{
+      data: [{{Positive_pre}},{{Negative_Pre}}, {{Neutral_Pre}}],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
+    }],
+  },
+  options: {
+    legend: {
+            position: 'bottom',
+    },
+      }
+  });
+
+  // And for a doughnut chart
+  var ctx = document.getElementById("Gender");
+  var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data:{
+    labels: ["Male", "Female"],
+    datasets: [{
+      data: [{{male}}, {{female}}],
+      backgroundColor: ['#007bff', '#dc3545'],
+    }],
+  },
+    options: {
+    legend: {
+            position: 'bottom',
+    },
+      }
+});
+
+var ctx = document.getElementById("postType");
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data:{
+    labels: ["Tweets","Retweets"],
+    datasets: [{
+      data: [{{totaltweets}}, {{retweet}}],
+      backgroundColor: ['#007bff','#ffc107'],
+    }],
+  },
+options: {
+    legend: {
+            position: 'bottom',
+    },
+ }
+});
+  </script>
+
+{% endblock %}

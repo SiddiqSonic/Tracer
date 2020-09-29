@@ -1,0 +1,23 @@
+{% extends 'analysis/base1.html' %}
+{% block content %}
+{% load staticfiles %}
+        <!-- Page Content -->
+		<div id="container"></div>
+      </div>
+      <!-- /.container-fluid -->
+
+  <script src="{% static 'Tracer/vendor/twitter_widgets/widgets.js' %}"></script>
+  <script>
+  {% for id in tweets_id %}
+  twttr.widgets.createTweet(
+  '{{ id }}',
+  document.getElementById('container'),
+  {
+    theme: 'light'
+  }
+);
+{% endfor %}
+
+  </script>
+
+{% endblock %}

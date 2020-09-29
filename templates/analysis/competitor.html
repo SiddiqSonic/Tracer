@@ -1,0 +1,98 @@
+{% extends 'analysis/base1.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<div id="chart">
+            <div class="row mt-5">
+
+              <div class="col-lg-6">
+                <div class="card mb-3">
+                  <div class="card-header">
+                  <i class="fas fa-chart-pie"></i>
+                  {{ competitor1 }}
+                  </div>
+                  <div class="card-body">
+                  <canvas id="competitor1" width="100%" ></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 text-left">
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <i class="fas fa-chart-pie"></i>
+                     {{ competitor2 }}
+                  </div>
+                  <div class="card-body">
+                    <canvas id="competitor2" width="100%"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-5">
+            <div class="col-lg-6 text-left">
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <i class="fas fa-chart-pie"></i>
+                    {{ competitor3 }}
+                  </div>
+                  <div class="card-body">
+                    <canvas id="competitor3" width="100%"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+<script src="{% static 'Tracer/vendor/chart.js/Chart.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+<script>
+    var ctx = document.getElementById("competitor1");
+  var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Positive", "Negative", "Neutral"],
+    datasets: [{
+      data: [{{postitive_count_C1}},{{negative_count_C1}}, {{neutral_count_C1}}],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
+    }],
+  },
+  options: {
+    legend: {
+            position: 'bottom',
+    },
+      }
+  });
+   var ctx = document.getElementById("competitor2");
+  var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Positive", "Negative", "Neutral"],
+    datasets: [{
+      data: [{{postitive_count_C2}},{{negative_count_C2}}, {{neutral_count_C2}}],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
+    }],
+  },
+  options: {
+    legend: {
+            position: 'bottom',
+    },
+      }
+  });
+   var ctx = document.getElementById("competitor3");
+  var myPieChart = new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ["Positive", "Negative", "Neutral"],
+    datasets: [{
+      data: [{{postitive_count_C1}},{{negative_count_C3}}, {{neutral_count_C3}}],
+      backgroundColor: ['#007bff', '#dc3545', '#ffc107'],
+    }],
+  },
+  options: {
+    legend: {
+            position: 'bottom',
+    },
+      }
+  });
+
+</script>
+{% endblock %}

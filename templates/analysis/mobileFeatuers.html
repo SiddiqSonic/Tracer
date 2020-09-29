@@ -1,0 +1,69 @@
+{% extends 'analysis/base1.html' %}
+{% block content %}
+{% load staticfiles %}
+
+{% for data in mobile_data %}
+
+<div class="row text-center p-5">
+	<div class="col left-col">
+		<ul class="list-group">
+			<li>
+				<img class="mobileicon" src="{% static 'Tracer/img/terminal-windows.png' %}">
+			</li>
+			<li >{{data.Operating_System}}</li>
+			{% if data.mob_os_sentiment == 'Positive' %}
+			<li class="pb-5 text-success">Positive</li>
+			{% elif data.mob_os_sentiment == "Negative" %}
+			<li class="pb-5 text-danger">Negative</li>
+			{% elif data.mob_os_sentiment == "Neutral" %}
+			<li class="pb-5 text-warning">Neutral</li>
+			{% endif %}
+			<li>
+				<img class="mobileicon" src="{% static 'Tracer/img/database.png' %}">
+			</li>
+
+			<li >{{data.Storage}}</li>
+			{% if data.mob_stroag_sentiment == 'Positive' %}
+			<li class="pb-5 text-success">Positive</li>
+			{% elif data.mob_stroag_sentiment == "Negative" %}
+			<li class="pb-5 text-danger">Negative</li>
+			{% elif data.mob_stroag_sentiment == "Neutral" %}
+			<li class="pb-5 text-warning">Neutral</li>
+			{% endif %}
+		</ul>
+	</div>
+	<div class="col image-div">
+		<img src="{{data.Mobile_image}}"/>
+		<p>{{data.Mobile_Name}}</p>
+	</div>
+	<div class="col right-col">
+		<ul class="list-group">
+			<li>
+				<img class="mobileicon" src="{% static 'Tracer/img/smartphone.png' %}">
+			</li>
+			<li >{{data.Display}}</li>
+			{% if data.mob_display_sentiment == 'Positive' %}
+			<li class="pb-5 text-success">Positive</li>
+			{% elif data.mob_display_sentiment == "Negative" %}
+			<li class="pb-5 text-danger">Negative</li>
+			{% elif data.mob_display_sentiment == "Neutral" %}
+			<li class="pb-5 text-warning">Neutral</li>
+			{% endif %}
+			<li>
+				<img class="mobileicon" src="{% static 'Tracer/img/camera.png' %}">
+			</li>
+			<li >{{data.Camera}}</li>
+			{% if data.mob_camera_sentiment == 'Positive' %}
+			<li class="pb-5 text-success">Positive</li>
+			{% elif data.mob_camera_sentiment == "Negative" %}
+			<li class="pb-5 text-danger">Negative</li>
+			{% elif data.mob_camera_sentiment == "Neutral" %}
+			<li class="pb-5 text-warning">Neutral</li>
+			{% endif %}
+		</ul>
+	</div>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}

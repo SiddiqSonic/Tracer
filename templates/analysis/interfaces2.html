@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debuging Interfaces</title>
+</head>
+<body>
+<h1>Scraper Data</h1>
+<strong>Total Reviews = {{total_review}}</strong>
+<h2>Positive Reviews</h2>>
+{% for reviews in positive_review %}
+<p> {{reviews}}</p>
+{% endfor %}
+
+<h2>Neutral Reviews</h2>>
+{% for reviews in neutral_review %}
+<p> {{reviews}}</p>
+{% endfor %}
+
+<h2>Negative Reviews</h2>>
+{% for reviews in negative_review %}
+<p> {{reviews}}</p>
+{% endfor %}
+</body>
+</body>
+<a href="{% url 'twitter'%}">Next</a>
+</html>
